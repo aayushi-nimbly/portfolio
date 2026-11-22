@@ -1,0 +1,61 @@
+# Your personal details. Edit freely — refresh the browser to see changes.
+
+name: Aayushi Rai
+headline: I build backend systems and GenAI agents.
+intro: >-
+  Software developer with 3+ years of building high-scale backend services and
+  production LLM systems, including multi-agent assistants, tool calling and
+  reliable fallback across AI models.
+open_to_work: true            # shows the "Open to opportunities" badge
+resume: resume.pdf            # file in static/, or a URL; "" hides the button
+
+# Big numbers shown under the intro. Keep to 3–4.
+highlights:
+  - value: 410M
+    label: requests/month served by APIs I've built on
+  - value: 1.16M
+    label: tasks/month through a pipeline I led
+  - value: 11
+    label: specialised agents in a multi-agent assistant
+
+about: >-
+  I work across backend infrastructure and applied GenAI. On the backend side I
+  build REST APIs and microservices, design data pipelines on GCP, and make
+  systems fail fast and recover under load. On the AI side I build multi-agent
+  assistants with intent routing, function calling, multi-provider fallback and
+  LLM observability, all grounded in real data.
+
+# Category: list of tools. Shown as rows in "Tools I work with".
+skills:
+  GenAI & LLM: [Multi-agent systems, LLM orchestration, Agent routing, Tool/function calling, Prompt engineering, LLM observability, Mastra, Vercel AI SDK, OpenAI SDK, OpenRouter]
+  Languages: [TypeScript, JavaScript, Python, SQL, MQL]
+  Backend & APIs: [Node.js, Express, Django, Django REST Framework, Flask, REST APIs, Microservices, SQLAlchemy]
+  Databases: [MongoDB, PostgreSQL, MySQL, Redis, Firestore]
+  Cloud & DevOps: [GCP, Cloud Run, Cloud Tasks, Pub/Sub, Cloud Scheduler, Firebase, AWS, CI/CD]
+  Tools: [Jest, Git, Postman, PostHog, Jira, Claude Code, Codex, Cursor]
+
+experience:
+  - when: Jul 2023 – Now
+    role: Software Developer
+    company: Nimbly Technologies
+    summary: Backend for a B2B SaaS platform serving ~410M requests a month across 20+ microservices.
+    points:
+      - Built a multi-agent AI assistant on WhatsApp that answers operations questions from live data, with agent routing, tool calling and fallback across AI models.
+      - Use AI tools (Claude Code, Codex, Cursor) daily to write tests, optimise CI/CD pipelines, and design and implement ADRs.
+      - Rebuilt report processing on Cloud Run and Cloud Tasks, now 1.16M tasks a month with issue creation down from 70s to 5s.
+      - Moved core data from Firebase to MongoDB across ~15 services, and made services fail fast after outages instead of cascading.
+      - Sped up dashboards with tuned MongoDB queries and Redis caching.
+  - when: Jul 2022 – Jul 2023
+    role: Software Developer Intern
+    company: KonnectNxt
+    summary: Designed and built the backend for an AI-enabled hiring platform from scratch, from the database schema to the Django REST APIs, on MySQL and AWS Lambda.
+
+education:
+  - when: 2019 – 2023
+    school: Guru Gobind Singh Indraprastha University
+    detail: B.Tech in Computer Science and Engineering · CGPA 9.00
+
+email: aayushirai9900@gmail.com
+links:
+  GitHub: https://github.com/aayushirai9900
+  LinkedIn: https://linkedin.com/in/aayushi-rai-2580351a8

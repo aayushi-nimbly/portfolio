@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ project.title }} | {{ profile.name }}{% endblock %}
+{% block description %}{{ project.description }}{% endblock %}
+{% block content %}
+  <article class="project">
+    <a class="back" href="{{ url_for('index') }}#projects">← Back to projects</a>
+
+    <header class="project-head">
+      {% if project.date %}<div class="date">{{ project.date | month_year }}</div>{% endif %}
+      <h1>{{ project.title }}</h1>
+      <p class="lede">{{ project.description }}</p>
+      {% if project.tags %}
+      <div class="tags">{% for t in project.tags %}<span>{{ t }}</span>{% endfor %}</div>
+      {% endif %}
+      {% if project.github or project.demo %}
+      <div class="cta">
+        {% if project.github %}<a class="btn primary" href="{{ project.github }}" target="_blank" rel="noopener">Source code</a>{% endif %}
+        {% if project.demo %}<a class="btn {{ 'ghost' if project.github else 'primary' }}" href="{{ project.demo }}" target="_blank" rel="noopener">Live demo</a>{% endif %}
+      </div>
+      {% endif %}
+    </header>
+
+    <div class="prose">
+      {{ project.body | safe }}
+    </div>
+
+    <a class="back bottom" href="{{ url_for('index') }}#projects">← All projects</a>
+  </article>
+{% endblock %}

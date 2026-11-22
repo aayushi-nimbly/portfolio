@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% block content %}
+  <header class="hero">
+    {% if profile.open_to_work %}<span class="tag">Open to opportunities</span>{% endif %}
+    <h1>Hi, I'm {{ profile.name.split()[0] }}.<br>{{ profile.headline }}</h1>
+    <p>{{ profile.intro }}</p>
+    <div class="cta">
+      <a class="btn primary" href="#projects">View projects</a>
+      {% if profile.resume %}
+        {% set resume_url = profile.resume if profile.resume.startswith('http') else url_for('static', filename=profile.resume) %}
+        <a class="btn ghost" href="{{ resume_url }}" target="_blank" rel="noopener">Download résumé</a>
+      {% endif %}
+    </div>
+    {% if profile.highlights %}
+    <div class="stats">
+      {% for h in profile.highlights %}
+      <div class="stat"><div class="value">{{ h.value }}</div><div class="label">{{ h.label }}</div></div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </header>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      {% for p in projects %}
+      <article class="card">
+        <div class="body">
+          <h3><a class="card-link" href="{{ url_for('project', slug=p.slug) }}">{{ p.title }}</a></h3>
+          <p>{{ p.description }}</p>
+          {% if p.tags %}
+          <div class="tags">{% for t in p.tags %}<span>{{ t }}</span>{% endfor %}</div>
+          {% endif %}
+          <div class="links">
+            <a href="{{ url_for('project', slug=p.slug) }}">Read more →</a>
+            {% if p.demo %}<a href="{{ p.demo }}" target="_blank" rel="noopener">Live demo →</a>{% endif %}
+          </div>
+        </div>
+      </article>
+      {% else %}
+      <p class="empty">Projects coming soon.</p>
+      {% endfor %}
+    </div>
+  </section>
+
+  {% if profile.experience %}
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="exp">
+      {% for e in profile.experience %}
+      <div class="row">
+        <div class="when">{{ e.when }}</div>
+        <div>
+          <h3>{{ e.role }}{% if e.company %} · {{ e.company }}{% endif %}</h3>
+          {% if e.summary %}<p>{{ e.summary }}</p>{% endif %}
+          {% if e.points %}
+          <ul class="points">{% for pt in e.points %}<li>{{ pt }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {% if profile.about or profile.skills %}
+  <section id="skills">
+    {% if profile.about %}
+    <h2>About</h2>
+    <p class="about">{{ profile.about }}</p>
+    {% endif %}
+    {% if profile.skills %}
+    <h2 class="sub">Tools I work with</h2>
+    <dl class="skill-table">
+      {% for category, items in profile.skills.items() %}
+      <div class="row">
+        <dt>{{ category }}</dt>
+        <dd>{{ items | join(' · ') }}</dd>
+      </div>
+      {% endfor %}
+    </dl>
+    {% endif %}
+  </section>
+  {% endif %}
+
+  {% if profile.education %}
+  <section id="education">
+    <h2>Education</h2>
+    <div class="exp">
+      {% for ed in profile.education %}
+      <div class="row">
+        <div class="when">{{ ed.when }}</div>
+        <div>
+          <h3>{{ ed.school }}</h3>
+          {% if ed.detail %}<p>{{ ed.detail }}</p>{% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <h3>Let's work together.</h3>
+    <p>
+      Drop me a line at <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+      {% for label, url in profile.links.items() %} · <a href="{{ url }}" target="_blank" rel="noopener">{{ label }}</a>{% endfor %}
+    </p>
+  </section>
+
+{% endblock %}

@@ -6,7 +6,7 @@ intro: >-
   Software developer with 3+ years of building high-scale backend services and
   production LLM systems, including multi-agent assistants, tool calling and
   reliable fallback across AI models.
-open_to_work: true            # shows the "Open to opportunities" badge
+open_to_work: false           # shows the "Open to opportunities" badge
 resume: resume.pdf            # file in static/, or a URL; "" hides the button
 
 # Big numbers shown under the intro. Keep to 3–4.
@@ -57,5 +57,5 @@ education:
 
 email: aayushirai9900@gmail.com
 links:
-  GitHub: https://github.com/aayushirai9900
+  GitHub: https://github.com/aayushi-nimbly
   LinkedIn: https://linkedin.com/in/aayushi-rai-2580351a8
